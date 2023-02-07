@@ -1,10 +1,11 @@
 import mongoose from "mongoose";
-import config from "../../utils/config";
+import config from "../../utils/config.js";
 
 const mongoose_connection = mongoose.createConnection(config.mongoose_url);
 const schema_todo_list_item = new mongoose.Schema(
     {
-        "task": { type: String, required: true },
+        "title": { type: String, required: true },
+        "description": { type: String, required: true },
         "completed": { type: Boolean, default: false },
         "date": { type: Date, default: Date.now }
     }
