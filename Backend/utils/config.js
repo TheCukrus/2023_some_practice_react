@@ -6,13 +6,15 @@ import path from "path";
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
-dotenv.config({ path: `${__dirname}/.env` });
+dotenv.config({ path: `${__dirname}../../.env` });
 
-const { MONGOOSE_URL, LISTENING_PORT, LISTENING_NETWORK_CARD_ADRESS } = process.env;
+const listening_port = process.env.LISTENING_PORT;
+const listening_network_card_adress = process.env.LISTENING_NETWORK_CARD_ADRESS;
+const mongoose_url = process.env.MONGOOSE_URL;
 
-export default
-    {
-        MONGOOSE_URL,
-        LISTENING_PORT,
-        LISTENING_NETWORK_CARD_ADRESS
-    }
+export default 
+{
+    listening_network_card_adress,
+    listening_port,
+    mongoose_url
+}
