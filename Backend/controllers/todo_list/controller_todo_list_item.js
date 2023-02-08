@@ -44,7 +44,19 @@ router_todo_list_items.post("/", async (req, res) =>
 {
     try
     {
-        const result1 = await model_todo_list_item.create(
+
+        const result1 = await model_todo_list_item.findOne({ "title": req.body.title })
+
+        if (result1 !== null)
+        {
+            res.status(200).json({ message: "This title name is taken" });
+            res.end();
+            return;
+        }
+
+
+
+        const result2 = await model_todo_list_item.create(
             {
                 "title": req.body.title,
                 "description": req.body.description,
@@ -53,6 +65,7 @@ router_todo_list_items.post("/", async (req, res) =>
         )
         res.status(200).json({ message: "New post created" });
         res.end();
+        return;
     }
     catch (err)
     {
