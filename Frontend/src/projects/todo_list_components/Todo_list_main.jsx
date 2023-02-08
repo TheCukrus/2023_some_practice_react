@@ -2,7 +2,6 @@ import axios from "axios";
 import { useState, useEffect } from "react";
 import Todo_list from "./Todo_list.jsx";
 import Todo_list_form from "./Todo_list_form.jsx";
-import Todo_list_item from "./Todo_list_item.jsx";
 
 const Todo_list_main = () =>
 {
@@ -43,8 +42,7 @@ const Todo_list_main = () =>
         <div>
             <h1>kello</h1>
             <Todo_list_form />
-            <Todo_list_item data={data} />
-            <Todo_list />
+            <Todo_list data={data}/>
         </div>
     )
 }

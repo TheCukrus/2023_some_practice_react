@@ -6,9 +6,9 @@ const Todo_list_item = (props) =>
 {
 
     const [item_data, set_item_data] = useState({
-        "title": props.data[0].title,
-        "description": props.data[0].description,
-        "completed": props.data[0].completed
+        "title": props.data.title,
+        "description": props.data.description,
+        "completed": props.data.completed
     })
 
     const update_todo_item = async (id, data) =>
@@ -32,13 +32,12 @@ const Todo_list_item = (props) =>
     const checkbox_on_change = async (e) =>
     {
         set_item_data({
-            "title": props.data[0].title,
-            "description": props.data[0].description,
+            "title": props.data.title,
+            "description": props.data.description,
             "completed": e.target.checked
         });
-        await update_todo_item(props.data[0].title, item_data);
+        await update_todo_item(props.data.title, item_data);
     }
-
     return (
         <div className={s.Todo_list_item}>
             <input type="checkbox" checked={item_data.completed} onChange={checkbox_on_change} />
