@@ -5,6 +5,7 @@ import { useState } from "react";
 const Todo_list_item = (props) =>
 {
 
+
     const [item_data, set_item_data] = useState({
         "title": props.data.title,
         "description": props.data.description,
@@ -29,20 +30,41 @@ const Todo_list_item = (props) =>
         }
     }
 
-    const checkbox_on_change = async (e) =>
+    const checkbox_on_change = (e) =>
     {
         set_item_data({
             "title": props.data.title,
             "description": props.data.description,
             "completed": e.target.checked
         });
-        await update_todo_item(props.data.title, item_data);
+        update_todo_item(props.data.title, item_data);
     }
+
+    const handle_remove_todo = async () =>
+    {
+        try
+        {
+            const result1 = await axios(
+                {
+                    "method": "Delete",
+                    "url": `http://127.0.0.1:80/api/v1/todo/${props.data.title}`
+                }
+            )
+            props.fetch_data();
+        }
+        catch (err)
+        {
+            console.log(err)
+        }
+    }
+
     return (
         <div className={s.Todo_list_item}>
             <input type="checkbox" checked={item_data.completed} onChange={checkbox_on_change} />
             <h3>{item_data.title}</h3>
             <p>{item_data.description}</p>
+            <input type="button" value="Remove todo" onClick={handle_remove_todo} />
+            <p></p>
         </div>
     )
 }

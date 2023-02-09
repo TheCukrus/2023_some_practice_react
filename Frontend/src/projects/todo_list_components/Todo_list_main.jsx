@@ -41,8 +41,8 @@ const Todo_list_main = () =>
     return (
         <div>
             <h1>kello</h1>
-            <Todo_list_form />
-            <Todo_list data={data}/>
+            <Todo_list_form fetch_data={fetch_data} />
+            <Todo_list data={data} fetch_data={fetch_data} />
         </div>
     )
 }

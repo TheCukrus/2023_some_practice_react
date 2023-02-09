@@ -1,7 +1,7 @@
 import { useState } from "react";
 import axios from "axios";
 
-const Todo_list_form = () =>
+const Todo_list_form = (props) =>
 {
     const [todo, set_todo] = useState({
         "title": "",
@@ -33,7 +33,7 @@ const Todo_list_form = () =>
                     "description": "",
                     "completed": false
                 });
-            console.log('pavyko')
+            props.fetch_data();
         }
         catch (err)
         {
