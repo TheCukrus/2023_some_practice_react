@@ -1,3 +1,18 @@
+/* Todo list item component */
 .Todo_list_item {
     background-color: bisque;
+}
+
+
+/* Todo list form component */
+.Todo_list_form_container {
+    background-color: beige;
+    width: 50%;
+    height: 20em;
+    border: 1px solid rgba(129, 129, 129, 0.507);
+    border-radius: 5px;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    margin: 0 auto; 
 }

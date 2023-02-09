@@ -1,5 +1,6 @@
 import { useState } from "react";
 import axios from "axios";
+import s from "./Todo_list.module.css";
 
 const Todo_list_form = (props) =>
 {
@@ -43,9 +44,10 @@ const Todo_list_form = (props) =>
 
     return (
 
-        <form onSubmit={handle_submit}>
+        <form className={s.Todo_list_form_container} onSubmit={handle_submit}>
             <div>
-                <label htmlFor="title">Title:</label>
+                <label htmlFor="title">Title</label>
+                <br />
                 <input
                     type="text"
                     id="title"
@@ -56,7 +58,8 @@ const Todo_list_form = (props) =>
             </div>
 
             <div>
-                <label htmlFor="description">Description:</label>
+                <label htmlFor="description">Description</label>
+                <br />
                 <input
                     type="text"
                     id="description"
