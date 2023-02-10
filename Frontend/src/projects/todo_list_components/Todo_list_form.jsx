@@ -46,11 +46,11 @@ const Todo_list_form = (props) =>
 
         <form className={s.Todo_list_form_container} onSubmit={handle_submit}>
             <div>
-                <label htmlFor="title">Title</label>
+                <label className={s.Todo_list_label} htmlFor="title">Title</label>
                 <br />
                 <input
                     type="text"
-                    id="title"
+                    id={s.title}
                     name="title"
                     value={todo.title}
                     onChange={handle_input_change}
@@ -58,18 +58,18 @@ const Todo_list_form = (props) =>
             </div>
 
             <div>
-                <label htmlFor="description">Description</label>
+                <label className={s.Todo_list_label} htmlFor="description">Description</label>
                 <br />
-                <input
+                <textarea
                     type="text"
-                    id="description"
+                    id={s.description}
                     name="description"
                     value={todo.description}
                     onChange={handle_input_change}
                 />
             </div>
 
-            <button type="submit">Add todo</button>
+            <button className={s.Todo_list_button_create} type="submit">Add todo</button>
 
         </form>
     )

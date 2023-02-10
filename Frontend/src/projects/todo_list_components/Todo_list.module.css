@@ -9,10 +9,59 @@
     background-color: beige;
     width: 50%;
     height: 20em;
-    border: 1px solid rgba(129, 129, 129, 0.507);
+    border: 1px solid saddlebrown;
     border-radius: 5px;
     justify-content: center;
     align-items: center;
     text-align: center;
-    margin: 0 auto; 
+    margin: 0 auto;
+}
+
+#title {
+    font-family: 'Times New Roman', Times, serif;
+    background-color: #f5f5dc;
+    color: #333;
+    font-size: large;
+    padding: 10px;
+    border: 1px solid saddlebrown;
+    border-radius: 5px;
+    width: 80%;
+}
+
+#description {
+    font-family: 'Times New Roman', Times, serif;
+    background-color: #f5f5dc;
+    color: #333;
+    font-size: large;
+    padding: 10px;
+    border: 1px solid saddlebrown;
+    border-radius: 5px;
+    width: 80%;
+}
+
+.Todo_list_label {
+    font-size: 20px;
+    font-weight: bold;
+    color: Saddlebrown;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-bottom: 10px;
+}
+
+.Todo_list_button_create {
+    background-color: beige;
+    border: none;
+    border-radius: 5px;
+    color: saddlebrown;
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease-in-out;
+}
+
+.Todo_list_button_create:hover {
+    background-color: #d6c8b6;
+    box-shadow: 3px 3px 7px rgba(0, 0, 0, 0.2);
+    transform: translate(0, -2px);
 }
