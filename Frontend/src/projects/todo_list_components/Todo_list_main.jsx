@@ -40,7 +40,6 @@ const Todo_list_main = () =>
 
     return (
         <div>
-            <h1>My Tasks</h1>
             <Todo_list_form fetch_data={fetch_data} />
             <Todo_list data={data} fetch_data={fetch_data} />
         </div>

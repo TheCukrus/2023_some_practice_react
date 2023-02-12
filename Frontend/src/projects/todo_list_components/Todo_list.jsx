@@ -7,6 +7,7 @@ const Todo_list = (props) =>
     return (
         <div>
             <h1>All todos</h1>
+            <hr />
             {todos.map((ele, i) => <Todo_list_item key={i} data={ele} fetch_data={props.fetch_data} />)}
         </div>
     )

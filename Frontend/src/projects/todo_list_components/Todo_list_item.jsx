@@ -1,6 +1,7 @@
 import axios from "axios";
 import s from "./Todo_list.module.css";
 import { useState } from "react";
+import trash from "../../icons/trash.png";
 
 const Todo_list_item = (props) =>
 {
@@ -21,8 +22,7 @@ const Todo_list_item = (props) =>
                     "method": "patch",
                     "url": `http://127.0.0.1:80/api/v1/todo/${id}`,
                     "data": data
-                }
-            )
+                })
         }
         catch (err)
         {
@@ -37,7 +37,7 @@ const Todo_list_item = (props) =>
             "description": props.data.description,
             "completed": e.target.checked
         });
-        update_todo_item(props.data.title, item_data);
+        update_todo_item(props.data.title, item_data)
     }
 
     const handle_remove_todo = async () =>
@@ -47,7 +47,7 @@ const Todo_list_item = (props) =>
             const result1 = await axios(
                 {
                     "method": "Delete",
-                    "url": `http://127.0.0.1:80/api/v1/todo/${props.data.title}`
+                    "url": `http://127.0.0.1:80/api/v1/todo/${item_data.title}`
                 }
             )
             props.fetch_data();
@@ -60,10 +60,11 @@ const Todo_list_item = (props) =>
 
     return (
         <div className={s.Todo_list_item}>
-            <input type="checkbox" checked={item_data.completed} onChange={checkbox_on_change} />
+            <input type="checkbox" checked={item_data.completed} onChange={checkbox_on_change} className={s.Todo_list_item_checkbox}/>
             <h3>{item_data.title}</h3>
             <p>{item_data.description}</p>
-            <input type="button" value="Remove todo" onClick={handle_remove_todo} />
+            {/* <input type="button" value="remove Todo"  /> */}
+            <img src={trash} alt="remove btn" className={s.Todo_list_item_remove_button} onClick={handle_remove_todo} />
             <p></p>
         </div>
     )
