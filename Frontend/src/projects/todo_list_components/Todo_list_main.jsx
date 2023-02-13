@@ -2,6 +2,7 @@ import axios from "axios";
 import { useState, useEffect } from "react";
 import Todo_list from "./Todo_list.jsx";
 import Todo_list_form from "./Todo_list_form.jsx";
+import s from "./Todo_list.module.css";
 
 const Todo_list_main = () =>
 {
@@ -39,7 +40,7 @@ const Todo_list_main = () =>
     }
 
     return (
-        <div>
+        <div className={s.Main_container}>
             <Todo_list_form fetch_data={fetch_data} />
             <Todo_list data={data} fetch_data={fetch_data} />
         </div>

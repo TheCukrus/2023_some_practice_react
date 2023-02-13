@@ -45,11 +45,11 @@ router_todo_list_items.post("/", async (req, res) =>
     try
     {
 
-        const result1 = await model_todo_list_item.findOne({ "title": req.body.title })
+        const result1 = await model_todo_list_item.findOne({ "task": req.body.task })
 
         if (result1 !== null)
         {
-            res.status(200).json({ message: "This title name is taken" });
+            res.status(200).json({ message: "that task exist already" });
             res.end();
             return;
         }
@@ -58,8 +58,7 @@ router_todo_list_items.post("/", async (req, res) =>
 
         const result2 = await model_todo_list_item.create(
             {
-                "title": req.body.title,
-                "description": req.body.description,
+                "task": req.body.task,
                 "completed": req.body.completed
             }
         )
@@ -75,17 +74,16 @@ router_todo_list_items.post("/", async (req, res) =>
 })
 
 //Update one Todo
-router_todo_list_items.patch("/:title", async (req, res) =>
+router_todo_list_items.patch("/:task", async (req, res) =>
 {
     try
     {
         const result1 = await model_todo_list_item.findOneAndUpdate(
             {
-                "title": req.params.title
+                "task": req.params.task
             },
             {
-                "title": req.body.title,
-                "description": req.body.description,
+                "task": req.body.task,
                 "completed": req.body.completed
             })
 
@@ -100,11 +98,11 @@ router_todo_list_items.patch("/:title", async (req, res) =>
 })
 
 //delete one Todo
-router_todo_list_items.delete("/:title", async (req, res) =>
+router_todo_list_items.delete("/:task", async (req, res) =>
 {
     try
     {
-        const resultt1 = await model_todo_list_item.findOneAndDelete({ "title": req.params.title });
+        const resultt1 = await model_todo_list_item.findOneAndDelete({ "task": req.params.task });
         res.status(200).json({ message: "Todo deleted" });
         res.end();
     }

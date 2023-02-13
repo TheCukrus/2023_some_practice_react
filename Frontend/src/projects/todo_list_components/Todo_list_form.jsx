@@ -5,8 +5,7 @@ import s from "./Todo_list.module.css";
 const Todo_list_form = (props) =>
 {
     const [todo, set_todo] = useState({
-        "title": "",
-        "description": "",
+        "task": "",
         "completed": false
     });
 
@@ -20,7 +19,7 @@ const Todo_list_form = (props) =>
         try
         {
             e.preventDefault();
-            if (!todo.title || !todo.description) return;
+            if (!todo.task) return;
 
             const result1 = await axios({
                 "method": "post",
@@ -30,8 +29,7 @@ const Todo_list_form = (props) =>
             //Add the todo to the list
             set_todo(
                 {
-                    "title": "",
-                    "description": "",
+                    "task": "",
                     "completed": false
                 });
             props.fetch_data();
@@ -45,32 +43,14 @@ const Todo_list_form = (props) =>
     return (
 
         <form className={s.Todo_list_form_container} onSubmit={handle_submit}>
-            <div>
-                <label className={s.Todo_list_label} htmlFor="title">Title</label>
-                <br />
-                <input
-                    type="text"
-                    id={s.title}
-                    name="title"
-                    value={todo.title}
-                    onChange={handle_input_change}
-                />
-            </div>
-
-            <div>
-                <label className={s.Todo_list_label} htmlFor="description">Description</label>
-                <br />
-                <textarea
-                    type="text"
-                    id={s.description}
-                    name="description"
-                    value={todo.description}
-                    onChange={handle_input_change}
-                />
-            </div>
-
-            <button className={s.Todo_list_button_create} type="submit">Add todo</button>
-
+            <input
+                type="text"
+                name="task"
+                value={todo.task}
+                placeholder="New task!"
+                onChange={handle_input_change}
+            />
+            <button type="submit">Add</button>
         </form>
     )
 }

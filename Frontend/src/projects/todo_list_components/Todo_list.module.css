@@ -1,110 +1,70 @@
-/* Todo list item component */
-.Todo_list_item {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    grid-template-rows: repeat(3, 1fr);
-    width: 300px;
-    height: 300px;
-    border: 1px solid black;
-    background-color: bisque;
+/* main container */
+.Main_container {
+   align-items: center;
+  /* background-color: #f0f0f0; */
+  padding: 20px; 
 }
-
-.Todo_list_item h3 {
-    grid-column: 1/4;
-    grid-row: 1/2;
-    text-align: center;
-    align-self: center;
-}
-
-.Todo_list_item p {
-    grid-column: 1/4;
-    grid-row: 2/4;
-    text-align: center;
-    align-self: center;
-}
-
-.Todo_list_item_remove_button {
-    grid-column: 3/4;
-    grid-row: 1/2;
-    align-self: center;
-    justify-self: center;
-    height: 30px;
-    width: 30px;
-}
-
-.Todo_list_item_remove_button:hover {
-    cursor: pointer;
-}
-
-.Todo_list_item_checkbox { 
-    grid-column: 3/4;
-    grid-row: 2/3;
-    align-self: center;
-    justify-self: center;
-
-}
-
-
-
 
 /* Todo list form component */
 .Todo_list_form_container {
-    background-color: beige;
-    width: 50%;
-    height: 20em;
-    border: 1px solid saddlebrown;
-    border-radius: 5px;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
-    margin: 0 auto;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  width: 50%;
+  margin: 0 auto;
+  background-color: #f0f0f0;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0px 0px 10px #cccccc;
+  margin-bottom: 10em;
 }
 
-#title {
-    font-family: 'Times New Roman', Times, serif;
-    background-color: #f5f5dc;
-    color: #333;
-    font-size: large;
-    padding: 10px;
-    border: 1px solid saddlebrown;
-    border-radius: 5px;
-    width: 80%;
+.Todo_list_form_container input[type="text"] {
+  flex-grow: 1;
+  padding: 10px;
+  font-size: large;
+  border: none;
+  border-radius: 5px;
+  box-shadow: 0px 0px 5px #cccccc;
+  margin-right: 10px;
 }
 
-#description {
-    font-family: 'Times New Roman', Times, serif;
-    background-color: #f5f5dc;
-    color: #333;
-    font-size: large;
-    padding: 10px;
-    border: 1px solid saddlebrown;
-    border-radius: 5px;
-    width: 80%;
+.Todo_list_form_container button {
+  background-color: #4CAF50;
+  color: white;
+  padding: 10px 20px;
+  border-radius: 5px;
+  font-size: large;
+  border: none;
+  cursor: pointer;
 }
 
-.Todo_list_label {
-    font-size: 20px;
-    font-weight: bold;
-    color: Saddlebrown;
-    text-transform: uppercase;
-    letter-spacing: 1px;
-    margin-bottom: 10px;
+/* Todo list item container */
+.Todo_item_container {
+  display: flex;
+  align-items: center;
+  padding: 10px;
+  border-bottom: 1px solid lightgray;
+  background-color: #f0f0f0;
+  margin-bottom: 10px;
+  border-radius: 5px;
 }
 
-.Todo_list_button_create {
-    background-color: beige;
-    border: none;
-    border-radius: 5px;
-    color: saddlebrown;
-    padding: 10px 20px;
-    font-size: 16px;
-    cursor: pointer;
-    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.1);
-    transition: all 0.3s ease-in-out;
+.Todo_text {
+  flex-grow: 1;
+  margin-right: 10px;
 }
 
-.Todo_list_button_create:hover {
-    background-color: #d6c8b6;
-    box-shadow: 3px 3px 7px rgba(0, 0, 0, 0.2);
-    transform: translate(0, -2px);
+.Todo_update_icon {
+  cursor: pointer;
+  height: 50px;
+  width: 50px;
 }
+
+.Todo_remove_icon {
+  cursor: pointer;
+  margin-left: 10px;
+  height: 50px;
+  width: 50px;
+}
+
