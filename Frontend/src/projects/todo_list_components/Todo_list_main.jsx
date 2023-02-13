@@ -32,13 +32,11 @@ const Todo_list_main = () =>
     useEffect(() => fetch_data, [])
     console.log(data)
 
-    if (!data_fetched)
-    {
-        return (
-            <div>Loading...</div>
-        )
-    }
 
+    //data not fetched
+    if (!data_fetched) return <div>Loading...</div>
+
+    //data is fetched
     return (
         <div className={s.Main_container}>
             <Todo_list_form fetch_data={fetch_data} />
