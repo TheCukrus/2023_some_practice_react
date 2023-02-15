@@ -3,6 +3,7 @@ import router_todo_list_items from "./controllers/todo_list/controller_todo_list
 import path from "path";
 import { fileURLToPath } from "url";
 import cors from "cors";
+import config from "./utils/config.js";
 
 const app = express();
 
@@ -21,5 +22,9 @@ app.use(cors());
 
 //routes
 app.use("/api/v1/todo", router_todo_list_items);
+
+
+//route for api
+app.get("/api/v1/data/", (req, res) => res.send(config.open_weather))
 
 export default app;
