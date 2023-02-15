@@ -57,14 +57,26 @@
 
 .Todo_update_icon {
   cursor: pointer;
-  height: 50px;
-  width: 50px;
+  height: 30px;
+  width: 30px;
 }
 
 .Todo_remove_icon {
   cursor: pointer;
   margin-left: 10px;
-  height: 50px;
-  width: 50px;
+  height: 30px;
+  width: 30px;
+}
+
+
+/* Style for the completed tasks */
+.Todo_item_container.completed {
+  background-color: #c2e8cf;
+  text-decoration: line-through;
+}
+
+/* Style for the completed task icon */
+.Todo_item_container.completed .Todo_update_icon {
+  display: none;
 }
 

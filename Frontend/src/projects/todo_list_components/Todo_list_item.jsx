@@ -67,7 +67,7 @@ const Todo_list_item = (props) =>
     }
 
     return (
-        <div className={s.Todo_item_container}>
+        <div className={`${s.Todo_item_container} ${item_data.completed ? s.completed: ""}`}>
             <p className={s.Todo_text}>{item_data.task}</p>
 
             {/* when icon is clicked its dissapear */}
