@@ -30,7 +30,6 @@ const Todo_list_main = () =>
     }
 
     useEffect(() => fetch_data, [])
-    console.log(data)
 
 
     //data not fetched

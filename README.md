@@ -1,8 +1,4 @@
 "# 2023_some_practice_react" 
-1. Todo List Application:
-Create a simple to-do list application that allows users to add, mark as complete, and delete tasks.
-You can use React for the frontend and a back-end of your choice for storing the data.
-
 2. Weather App:
 Build a weather application that displays the current weather conditions for a given location.
 You can use APIs like OpenWeatherMap to retrieve the data and display it in a user-friendly way.
