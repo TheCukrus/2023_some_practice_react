@@ -1,17 +1,33 @@
-import React from "react";
+import { useState, useEffect } from "react";
 import axios from "axios";
 import Weather_app_location_form from "./Weather_app_location_form.jsx";
 
 const Weather_app_main = () =>
 {
+    const [open_weather_api, set_open_weather_api] = useState("");
 
 
+    //fetching api from server
+    const fetch_api = async () =>
+    {
+        try
+        {
+            const open_weather_api = await axios.get("http://127.0.0.1:80/api/v1/data");
+            set_open_weather_api(open_weather_api.data);
+        }
+        catch (err) 
+        {
+            console.log(err);
+        }
+    }
 
+
+    useEffect(() => fetch_api, []);
 
     return (
         <div>
             weather_app
-            <Weather_app_location_form />
+            <Weather_app_location_form open_weather_api={open_weather_api} />
         </div>
     )
 }
@@ -42,7 +58,6 @@ export default Weather_app_main;
 
 //lat=54.63333
 //lon=24.93333
-//appid=1e049bc5a6c197798505ba15c8a0e8cf
 
 //api for weather
 //https://api.openweathermap.org/data/2.5/weather?lat=54.63333&lon=24.93333&appid=1e049bc5a6c197798505ba15c8a0e8cf

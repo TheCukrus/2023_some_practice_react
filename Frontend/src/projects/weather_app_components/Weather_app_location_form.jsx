@@ -1,45 +1,47 @@
 import axios from "axios";
-import React from "react";
+import { useEffect } from "react";
+import { useState } from "react";
 
-const Weather_app_location_form = () =>
+const Weather_app_location_form = (props) =>
 {
-    const open_weather_api = fetch("http://127.0.0.1:80/api/v1/data").then(response => response.json()).then(data => { return data })
-    //not working
-    console.log(open_weather_api)
+    const [location, set_location] = useState({ "lat": "", "lon": "" });
+    const [city, set_city] = useState("");
+    const [temp, set_temp] = useState({});
 
+    const handle_input_change = (e) => set_city(e.target.value)
 
-
-
-    const get_geo_location = async () =>
+    const geo_location = async () =>
     {
         try
         {
-            const geolocation = await axios(
-                {
-                    "method": "get",
-                    "url": "http://api.openweathermap.org/geo/1.0/direct?q=trakai&limit=5&appid=1e049bc5a6c197798505ba15c8a0e8cf"
-                }
-            )
+            const geolocation = await axios.get(`http://api.openweathermap.org/geo/1.0/direct?q=${city}&limit=5&appid=${props.open_weather_api}`)
+            set_location({ "lat": geolocation.data[1].lat, "lon": geolocation.data[1].lon })
         }
         catch (err)
         {
-            console.log(err)
+            console.log(err);
+
         }
     }
 
-    fetch('http://localhost:80/api/data')
-        .then(response => response.json())
-        .then(data =>
-        {
-            console.log(data)
-            // Do something with the data
-        });
-
     return (
-        <form>
-            <input type="text" placeholder="Enter City name" />
-            <button type="submit">submit</button>
-        </form>
+        <div>
+            <form>
+                <input
+                    type="text"
+                    placeholder="Enter City name"
+                    onChange={handle_input_change}
+                />
+
+
+                <button type="button" onClick={geo_location}>submit</button>
+            </form>
+
+            {props.open_weather_api}<br />
+            {city}<br />
+            {location.lat}<br />
+            {location.lon}
+        </div>
     )
 }
 

@@ -4,3 +4,4 @@
 MONGOOSE_URL = your_mongodb_link
 LISTENING_PORT = your_port
 LISTENING_NETWORK_CARD_ADRESS = your_card_adress
+OPEN_WEATHER_API_KEY = your_open_weather_api_key
