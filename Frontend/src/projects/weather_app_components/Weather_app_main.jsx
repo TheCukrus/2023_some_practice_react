@@ -10,6 +10,7 @@ const Weather_app_main = () =>
     const [city, set_city] = useState("");
     const [error, set_error] = useState("");
     const [data, set_data] = useState({});
+    const [air_pollution, set_air_pollution] = useState({})
     const [is_loading, set_is_loading] = useState(false);
 
 
@@ -44,7 +45,26 @@ const Weather_app_main = () =>
         }
     };
 
-    //fetching data from open weather 
+    //fetching current Air pollution data from open weather
+    const fetch_air_polution = async () =>
+    {
+        if (location.lat && location.lon)
+        {
+            try
+            {
+                const pollution_data = await axios.get(`http://api.openweathermap.org/data/2.5/air_pollution?lat=${location.lat}&lon=${location.lon}&appid=${open_weather_api}`);
+                set_air_pollution(pollution_data.data)
+                set_error("");
+            }
+            catch (err)
+            {
+                console.log(err);
+                set_error("Could not retrieve air pollution data. Please try again.");
+            }
+        }
+    }
+
+    //fetching current Weather data from open weather 
     const fetch_data = async () =>
     {
         if (location.lat && location.lon)
@@ -52,7 +72,7 @@ const Weather_app_main = () =>
             try
             {
                 set_is_loading(true);
-                const weather_data = await axios.get(`https://api.openweathermap.org/data/2.5/weather?lat=${location.lat}&lon=${location.lon}&appid=${open_weather_api}`);
+                const weather_data = await axios.get(`https://api.openweathermap.org/data/2.5/weather?lat=${location.lat}&lon=${location.lon}&units=metric&appid=${open_weather_api}`);
                 set_data(weather_data.data);
                 set_error("");
                 set_is_loading(false);
@@ -72,14 +92,17 @@ const Weather_app_main = () =>
 
     useEffect(() => fetch_api, []);
     useEffect(() => { fetch_data(); }, [location]);
+    useEffect(() => { fetch_air_polution(); }, [location])
+    //temp
     useEffect(() => console.log(data), [data]);
+    useEffect(() => console.log(air_pollution), [air_pollution]);
 
 
     return (
         <div>
             weather_app
             <Weather_app_location_form set_city={set_city} error={error} geo_location={geo_location} is_loading={is_loading} />
-            <Weather_app_data data={data} />
+            <Weather_app_data data={data} air_pollution={air_pollution} />
         </div>
     )
 }
