@@ -4,11 +4,18 @@ import Weather_icon from "./Weather_icon.jsx";
 const Weather_app_data = (props) =>
 {
 
-    const air_quality_index = () =>
+    //function to calculate severity
+    const calculate_severity = (aqi) =>
     {
-        // AQI = [(I_high - I_low)/(BP_high - BP_low)] * (C - BP_low) + I_low
-    
+        if (aqi === 1) return "Good air";
+        if (aqi === 2) return "Fair air";
+        if (aqi === 3) return "Moderate air";
+        if (aqi === 4) return "Poor air";
+        if (aqi === 5) return "Very poor air"
     }
+    //calculate severity from open weather
+    const severity = calculate_severity(props.air_pollution.list[0].main.aqi);
+
 
     if (Object.keys(props.data).length === 0) return null;
 
@@ -31,10 +38,10 @@ const Weather_app_data = (props) =>
             wind+
             wind direction+
             visibility+
-            barometer
             */}
-            <p>Air Quality Index</p>
+            {props.air_pollution.list[0].components.co}
             <p>severity</p>
+            {severity}
             <p>feels like</p>
             {props.data.main.feels_like}
             <p>wind speed</p>
