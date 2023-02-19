@@ -1,8 +1,7 @@
 /* main container */
 .Main_container {
-   align-items: center;
-  /* background-color: #f0f0f0; */
-  padding: 20px; 
+  align-items: center;
+  padding: 20px;
 }
 
 /* Todo list form component */
@@ -81,4 +80,3 @@
 .Todo_item_container.completed .Todo_update_icon {
   display: none;
 }
-

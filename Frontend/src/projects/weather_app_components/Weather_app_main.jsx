@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import axios from "axios";
 import Weather_app_location_form from "./Weather_app_location_form.jsx";
 import Weather_app_data from "./Weather_app_data.jsx";
-
+import s from "./Weather.module.css";
 const Weather_app_main = () =>
 {
     const [open_weather_api, set_open_weather_api] = useState("");
@@ -99,7 +99,7 @@ const Weather_app_main = () =>
 
 
     return (
-        <div>
+        <div className={s.main_container}>
             weather_app
             <Weather_app_location_form set_city={set_city} error={error} geo_location={geo_location} is_loading={is_loading} />
             <Weather_app_data data={data} air_pollution={air_pollution} />

@@ -1,3 +1,4 @@
+import s from "./Weather.module.css";
 
 const Weather_app_location_form = (props) =>
 {
@@ -10,7 +11,7 @@ const Weather_app_location_form = (props) =>
     }
 
     return (
-        <form onSubmit={handle_submit}>
+        <form className={s.Weather_form} onSubmit={handle_submit}>
             <input
                 type="text"
                 placeholder="Enter City name"
