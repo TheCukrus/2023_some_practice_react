@@ -1,21 +1,32 @@
-import React from "react";
+import { useState } from "react";
 import Weather_icon from "./Weather_icon.jsx";
 import s from "./Weather.module.css";
 
 const Weather_app_data = (props) =>
 {
 
+    const [unit, set_unit] = useState("C");
+
     if (Object.keys(props.data).length === 0) return null;
+
+    //change temperature from Celsius to Farenghaite
+    const handle_temp_change = () =>
+    {
+        set_unit(unit === "C" ? "F" : "C");
+    }
 
     //function to calculate severity
     const calculate_severity = (aqi) =>
     {
-        if (typeof aqi === "undefined") return "Unknown";
-        if (aqi === 1) return "Good air";
-        if (aqi === 2) return "Fair air";
-        if (aqi === 3) return "Moderate air";
-        if (aqi === 4) return "Poor air";
-        if (aqi === 5) return "Very poor air"
+        const severity_levels =
+        {
+            1: "Good air",
+            2: "Fair air",
+            3: "Moderate air",
+            4: "Poor air",
+            5: "Very poor air"
+        };
+        return severity_levels[aqi] || "Unknown";
     }
 
     //calculate severity from open weather
@@ -43,28 +54,37 @@ const Weather_app_data = (props) =>
     //round temperature
     const temperature = Math.round(props.data.main.temp)
 
+    //round feels like temperature
+    const feels_like = Math.round(props.data.main.feels_like)
+
+    //calculate wind speed
+    const wind_speed = Math.round(props.data.wind.speed);
+
+    //count km visibility
+    const visibility = props.data.visibility / 1000
+
     return (
         <div className={s.main_data_container}>
 
             <div className={s.big_data}>
 
-                <div className={s.item1}>
+                <div className={s.b_item1}>
                     <p>{props.data.name}</p>
                 </div>
 
-                <div className={s.item2}>
+                <div className={s.b_item2}>
                     <Weather_icon code={props.data.weather[0].icon} alt={props.data.weather[0].description} />
                 </div>
 
-                <div className={s.item3}>
-                    <p>{temperature}</p>
+                <div className={s.b_item3}>
+                    <p>{`${temperature}°`}</p>
                 </div>
 
-                <div className={s.item4}>
-                    <input type="checkbox" value="temp" />
+                <div className={s.b_item4}>
+                    <button onClick={handle_temp_change}>{unit}</button>
                 </div>
 
-                <div className={s.item5}>
+                <div className={s.b_item5}>
                     {props.data.weather[0].description}
                 </div>
 
@@ -72,21 +92,34 @@ const Weather_app_data = (props) =>
             <br />
             {/* smoller information */}
             <div className={s.small_data}>
-                {`Updated as of ${formated_date}`}
-                {props.air_pollution.list[0].components.co}
-                <p>severity</p>
-                {severity}
-                <p>feels like</p>
-                {props.data.main.feels_like}
-                <p>wind speed</p>
-                {props.data.wind.speed}
-                <p>wind direction</p>
-                {props.data.wind.deg}
-                <p>visibility</p>
-                {props.data.visibility}
+
+                <div className={s.s_item1}>
+                    {`Updated as of ${formated_date}`}
+                </div>
+
+                <div className={s.s_item2}>
+                    <p>Visibility {visibility} km</p>
+                </div>
+
+                <div className={s.s_item3}>
+                    <p>severity {severity}</p>
+                </div>
+
+                <div className={s.s_item4}>
+                    <p>feels like {feels_like}°</p>
+                </div>
+
+                <div className={s.s_item5}>
+                    <p>{`Wind speed ${wind_speed} km/h`}</p>
+                </div>
+
+                <div className={s.s_item6}>
+                    <p>Humidity {props.data.main.humidity}%</p>
+                </div>
+
             </div>
 
-        </div>
+        </div >
     )
 }
 

@@ -13,8 +13,6 @@ const Weather_app_main = () =>
     const [air_pollution, set_air_pollution] = useState({})
     const [is_loading, set_is_loading] = useState(false);
 
-
-
     //fetching api from server
     const fetch_api = async () =>
     {
@@ -100,7 +98,6 @@ const Weather_app_main = () =>
 
     return (
         <div className={s.main_container}>
-            weather_app
             <Weather_app_location_form set_city={set_city} error={error} geo_location={geo_location} is_loading={is_loading} />
             <Weather_app_data data={data} air_pollution={air_pollution} />
         </div>
