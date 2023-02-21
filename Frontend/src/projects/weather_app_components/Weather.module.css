@@ -23,7 +23,6 @@
 .b_item1 {
     grid-area: item1;
     text-align: center;
-    /* font-size: 30px; */
     font-size: xx-large;
 }
 
@@ -64,8 +63,8 @@
         "s_item1 s_item1 s_item1"
         "s_item2 s_item3 s_item4"
         "s_item5 . s_item6";
-        column-gap: 1px;
-        row-gap: 1px;
+    column-gap: 1px;
+    row-gap: 1px;
 }
 
 .s_item1 {
@@ -116,11 +115,46 @@
     text-align: center;
 }
 
+.Weather_temp_changer {
+    background-color: transparent;
+    color: white;
+    font-size: x-large;
+    text-decoration: underline;
+    border: none;
+}
+
 /* Weather_app_location_form */
 .Weather_form {
     color: red;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    width: 50%;
+    margin: 0 auto;
+    padding: 20px;
+    border-radius: 10px;
+    margin-bottom: 10em;
 }
 
+.Weather_form input[type="text"] {
+    padding: 10px;
+    font-size: large;
+    border: none;
+    border-radius: 5px;
+    box-shadow: 0px 0px 5px #cccccc;
+    margin-right: 10px;
+    flex-grow: 1;
+}
+
+.Weather_form_button {
+    background-color: #4CAF50;
+    color: white;
+    padding: 10px 20px;
+    border-radius: 5px;
+    font-size: large;
+    border: none;
+    cursor: pointer;
+}
 
 /* Weather icon */
 .icon {

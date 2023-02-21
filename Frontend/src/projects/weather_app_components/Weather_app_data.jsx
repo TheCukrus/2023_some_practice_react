@@ -1,18 +1,16 @@
-import { useState } from "react";
 import Weather_icon from "./Weather_icon.jsx";
 import s from "./Weather.module.css";
 
 const Weather_app_data = (props) =>
 {
 
-    const [unit, set_unit] = useState("C");
 
     if (Object.keys(props.data).length === 0) return null;
 
     //change temperature from Celsius to Farenghaite
     const handle_temp_change = () =>
     {
-        set_unit(unit === "C" ? "F" : "C");
+        props.set_unit(props.unit === "C°" ? "F°" : "C°");
     }
 
     //function to calculate severity
@@ -51,6 +49,7 @@ const Weather_app_data = (props) =>
         timeZone: "UTC"
     })
 
+
     //round temperature
     const temperature = Math.round(props.data.main.temp)
 
@@ -65,7 +64,7 @@ const Weather_app_data = (props) =>
 
     return (
         <div className={s.main_data_container}>
-
+            {/* Bigger information */}
             <div className={s.big_data}>
 
                 <div className={s.b_item1}>
@@ -77,11 +76,11 @@ const Weather_app_data = (props) =>
                 </div>
 
                 <div className={s.b_item3}>
-                    <p>{`${temperature}°`}</p>
+                    <p>{`${props.temp_converter(temperature)}°`}</p>
                 </div>
 
                 <div className={s.b_item4}>
-                    <button onClick={handle_temp_change}>{unit}</button>
+                    <button className={s.Weather_temp_changer} onClick={handle_temp_change}>{props.unit}</button>
                 </div>
 
                 <div className={s.b_item5}>
@@ -106,7 +105,7 @@ const Weather_app_data = (props) =>
                 </div>
 
                 <div className={s.s_item4}>
-                    <p>feels like {feels_like}°</p>
+                    <p>feels like {props.temp_converter(feels_like)}°</p>
                 </div>
 
                 <div className={s.s_item5}>

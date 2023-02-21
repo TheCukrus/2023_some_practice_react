@@ -17,7 +17,7 @@ const Weather_app_location_form = (props) =>
                 placeholder="Enter City name"
                 onChange={handle_input_change}
             />
-            <button type="submit">{props.is_loading ? "Loading..." : "Get weather"}</button>
+            <button className={s.Weather_form_button} type="submit">{props.is_loading ? "Loading..." : "Get weather"}</button>
             {props.error && <p>{props.error}</p>}
         </form>
 

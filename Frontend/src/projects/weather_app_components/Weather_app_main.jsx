@@ -3,6 +3,7 @@ import axios from "axios";
 import Weather_app_location_form from "./Weather_app_location_form.jsx";
 import Weather_app_data from "./Weather_app_data.jsx";
 import s from "./Weather.module.css";
+
 const Weather_app_main = () =>
 {
     const [open_weather_api, set_open_weather_api] = useState("");
@@ -10,8 +11,10 @@ const Weather_app_main = () =>
     const [city, set_city] = useState("");
     const [error, set_error] = useState("");
     const [data, set_data] = useState({});
-    const [air_pollution, set_air_pollution] = useState({})
+    const [air_pollution, set_air_pollution] = useState({});
     const [is_loading, set_is_loading] = useState(false);
+    const [unit, set_unit] = useState("C°");
+
 
     //fetching api from server
     const fetch_api = async () =>
@@ -85,13 +88,19 @@ const Weather_app_main = () =>
         }
     };
 
+    //C to F temp converter
+    const temp_converter = (temp) =>
+    {
+        if (unit === "C°") return temp;
+        return (temp * 9 / 5) + 32;
+    }
 
 
 
     useEffect(() => fetch_api, []);
     useEffect(() => { fetch_data(); }, [location]);
-    useEffect(() => { fetch_air_polution(); }, [location])
-    //temp
+    useEffect(() => { fetch_air_polution(); }, [location]);
+     //temp
     useEffect(() => console.log(data), [data]);
     useEffect(() => console.log(air_pollution), [air_pollution]);
 
@@ -99,20 +108,9 @@ const Weather_app_main = () =>
     return (
         <div className={s.main_container}>
             <Weather_app_location_form set_city={set_city} error={error} geo_location={geo_location} is_loading={is_loading} />
-            <Weather_app_data data={data} air_pollution={air_pollution} />
+            <Weather_app_data data={data} air_pollution={air_pollution} unit={unit} set_unit={set_unit} temp_converter={temp_converter} />
         </div>
     )
 }
 
 export default Weather_app_main;
-
-/*
-*Search bar or location input for users to input a location and get weather information
-*Current weather information such as temperature, humidity, wind speed, and weather condition (e.g. sunny, cloudy, rainy)
-*Forecasted weather information for the upcoming days, typically up to a week
-*Interactive weather maps with zoom and pan functionality
-*Ability to switch between units of measurement (e.g. Celsius and Fahrenheit)
-*Customizable alerts and notifications for severe weather conditions
-*Integration with other apps and services, such as calendar or email, to plan activities or travel based on weather conditions
-*In-app purchases for premium features such as ad-free experience or extended forecast data
-*/
