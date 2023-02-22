@@ -1,8 +1,6 @@
 "# 2023_some_practice_react" 
 1. Todo App:
 2. Weather App:
-Build a weather application that displays the current weather conditions for a given location.
-You can use APIs like OpenWeatherMap to retrieve the data and display it in a user-friendly way.
 
 3. Recipe Book: 
 Create a recipe book application that allows users to search for and save their favorite recipes.
