@@ -100,9 +100,9 @@ const Weather_app_main = () =>
     useEffect(() => fetch_api, []);
     useEffect(() => { fetch_data(); }, [location]);
     useEffect(() => { fetch_air_polution(); }, [location]);
-     //temp
-    useEffect(() => console.log(data), [data]);
-    useEffect(() => console.log(air_pollution), [air_pollution]);
+
+    // useEffect(() => console.log(data), [data]);
+    // useEffect(() => console.log(air_pollution), [air_pollution]);
 
 
     return (
