@@ -21,3 +21,37 @@
     display: flex;
     align-items: flex-end;
 }
+
+
+/*Recipe_book_categories*/
+
+.categories_wrap {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.category {
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: all 0.2s ease-in-out;
+    display: inline-block;
+    width: 250px;
+    height: 250px;
+    margin: 10px;
+    text-align: start;
+    font-size: 24px;
+    position: relative;
+}
+
+.category:hover {
+    background-color: #f5f5f5;
+}
+
+.category_title {
+    font-weight: bold;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    margin: 10px;
+}

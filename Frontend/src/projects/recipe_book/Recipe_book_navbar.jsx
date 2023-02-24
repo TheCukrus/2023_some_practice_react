@@ -2,8 +2,10 @@ import React from "react";
 import { Link } from "react-router-dom";
 import s from "./Recipe_book.module.css";
 
-const Recipe_book_navbar = (props) =>
+const Recipe_book_navbar = () =>
 {
+ 
+
     return (
         <div>
             <div className={s.navbar_links}>
