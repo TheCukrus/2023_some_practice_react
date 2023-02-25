@@ -1,20 +1,24 @@
 import React from "react";
-import { Link } from "react-router-dom";
 import s from "./Recipe_book.module.css";
 
-const Recipe_book_navbar = () =>
+const Recipe_book_navbar = (props) =>
 {
- 
 
+    const handle_button_home = () => props.set_state("main");
+    const hangle_button_categories = () => props.set_state("categories");
+
+
+    console.log(props)
     return (
         <div>
             <div className={s.navbar_links}>
-                <Link to="/recipe_book">Home</Link><br />
-                <Link to="/recipe_book/categories">Categories</Link>
+                <input type="button" value="Home" onClick={handle_button_home} />
+                <input type="button" value="Categories" onClick={hangle_button_categories} />
+
+                <form>
+                    <input type="search" />
+                </form>
             </div>
-            <form className={s.search_bar}>
-                <input type="search"></input>
-            </form>
             <hr />
         </div>
     )

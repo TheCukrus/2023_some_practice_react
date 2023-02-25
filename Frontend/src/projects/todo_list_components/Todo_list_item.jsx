@@ -3,7 +3,6 @@ import s from "./Todo_list.module.css";
 import { useState } from "react";
 import trash_can from "../../icons/trash_can.png";
 import complete from "../../icons/complete.png";
-import { useEffect } from "react";
 
 const Todo_list_item = (props) =>
 {
