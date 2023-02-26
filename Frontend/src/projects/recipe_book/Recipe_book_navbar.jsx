@@ -4,11 +4,10 @@ import s from "./Recipe_book.module.css";
 const Recipe_book_navbar = (props) =>
 {
 
-    const handle_button_home = () => props.set_state("main");
-    const hangle_button_categories = () => props.set_state("categories");
+    const handle_button_home = () => props.set_states("home");
+    const hangle_button_categories = () => props.set_states("categories");
 
 
-    console.log(props)
     return (
         <div>
             <div className={s.navbar_links}>
@@ -16,7 +15,7 @@ const Recipe_book_navbar = (props) =>
                 <input type="button" value="Categories" onClick={hangle_button_categories} />
 
                 <form>
-                    <input type="search" />
+                    <input type="search" placeholder="Search your recipes" />
                 </form>
             </div>
             <hr />
