@@ -4,6 +4,7 @@ import Recipe_book_categories from "./Recipe_book_categories.jsx";
 import Recipe_book_home from "./Recipe_book_home.jsx";
 import Recipe_book_navbar from "./Recipe_book_navbar.jsx";
 import Recipe_book_meals from "./Recipe_book_meals.jsx";
+import Recipe_book_meal_by_id from "./Recipe_book_meal_by_id.jsx";
 
 const Recipe_book_main = () =>
 {
@@ -13,7 +14,11 @@ const Recipe_book_main = () =>
 
     const [categories, set_categories] = useState([]);
     const [category_imgs, set_category_imgs] = useState([]);
-    const [choosen_category, set_choosen_category] = useState("")
+
+    const [choosen_category, set_choosen_category] = useState("");
+    const [meals, set_meals] = useState([]);
+
+    const [meal_id, set_meal_id] = useState("")
 
 
     const fetch_recipes_categories = async () =>
@@ -51,7 +56,7 @@ const Recipe_book_main = () =>
         catch (err)
         {
             console.log(err);
-            set_error("Can't retrieve the images for category. Please try again");
+            set_error("Can't retrieve the images for category. Please try again.");
         }
     }
 
@@ -60,22 +65,29 @@ const Recipe_book_main = () =>
     {
         try
         {
+            set_is_fetching(true);
             const meals = await axios.get(`https://themealdb.com/api/json/v1/1/filter.php?c=${category}`);
-            console.log(meals.data);
+            set_meals(meals.data.meals);
+            set_error("");
+            //temp
+            console.log(meals.data.meals);
+
         }
         catch (err)
         {
             console.log(err);
+            set_error("Can't retrieve the meals by category. Please try again.")
+        }
+        finally
+        {
+            set_is_fetching(false);
         }
     }
 
 
-    //temp
-    // useEffect(() => console.log(states), [states])
-    // useEffect(() => console.log(choosen_category), [states])
+
+    //fetching meals every time when clicking on the category meal
     useEffect(() => { fetch_meals_by_category(choosen_category) }, [choosen_category])
-
-
 
     //fetching category when clicked "Category" in navbar
     useEffect(() =>
@@ -100,7 +112,8 @@ const Recipe_book_main = () =>
             <Recipe_book_navbar set_states={set_states} />
             {states === "home" ? <Recipe_book_home /> : null}
             {states === "categories" ? <Recipe_book_categories categories={categories} error={error} set_error={set_error} category_imgs={category_imgs} set_states={set_states} set_choosen_category={set_choosen_category} /> : null}
-            {states === "meals" ? <Recipe_book_meals /> : null}
+            {states === "meals" ? <Recipe_book_meals meals={meals} error={error} set_error={set_error} set_states={set_states} set_meal_id={set_meal_id} /> : null}
+            {states === "meal" ? <Recipe_book_meal_by_id /> : null}
         </div>
     )
 };

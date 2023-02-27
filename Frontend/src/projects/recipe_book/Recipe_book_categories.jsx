@@ -8,7 +8,7 @@ const Recipe_book_categories = (props) =>
         <div>
             {props.error && <p>{props.error}</p>}
 
-            <div className={s.container}>
+            <div className={s.category_container}>
                 {props.categories.length > 0 ? (
                     props.categories.map((category) =>
                     (
