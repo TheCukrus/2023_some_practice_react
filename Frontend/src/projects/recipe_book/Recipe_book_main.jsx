@@ -19,6 +19,7 @@ const Recipe_book_main = () =>
     const [meals, set_meals] = useState([]);
 
     const [meal_id, set_meal_id] = useState("")
+    const [meal, set_meal] = useState([])
 
 
     const fetch_recipes_categories = async () =>
@@ -69,9 +70,6 @@ const Recipe_book_main = () =>
             const meals = await axios.get(`https://themealdb.com/api/json/v1/1/filter.php?c=${category}`);
             set_meals(meals.data.meals);
             set_error("");
-            //temp
-            console.log(meals.data.meals);
-
         }
         catch (err)
         {
@@ -84,10 +82,25 @@ const Recipe_book_main = () =>
         }
     }
 
-
-
-    //fetching meals every time when clicking on the category meal
-    useEffect(() => { fetch_meals_by_category(choosen_category) }, [choosen_category])
+    const fetch_meal_by_id = async (id) =>
+    {
+        try
+        {
+            set_is_fetching(true);
+            const meal = await axios.get(`https://themealdb.com/api/json/v1/1/lookup.php?i=${id}`)
+            set_meal(meal.data.meals[0]);
+            set_error("");
+        }
+        catch (err)
+        {
+            console.log(err);
+            set_error("Can't retrieve meal by id. Please try again");
+        }
+        finally
+        {
+            set_is_fetching(false);
+        }
+    }
 
     //fetching category when clicked "Category" in navbar
     useEffect(() =>
@@ -107,13 +120,31 @@ const Recipe_book_main = () =>
         });
     }, [categories])
 
+    //fetching meals every time when clicking on the category meal
+    useEffect(() =>
+    {
+        if (states === "meals" && !is_fetching)
+        {
+            fetch_meals_by_category(choosen_category)
+        }
+    }, [states])
+
+    //fetching meal by given id
+    useEffect(() =>
+    {
+        if (states === "meal" && !is_fetching)
+        {
+            fetch_meal_by_id(meal_id);
+        }
+    }, [states])
+
     return (
         <div>
             <Recipe_book_navbar set_states={set_states} />
             {states === "home" ? <Recipe_book_home /> : null}
             {states === "categories" ? <Recipe_book_categories categories={categories} error={error} set_error={set_error} category_imgs={category_imgs} set_states={set_states} set_choosen_category={set_choosen_category} /> : null}
             {states === "meals" ? <Recipe_book_meals meals={meals} error={error} set_error={set_error} set_states={set_states} set_meal_id={set_meal_id} /> : null}
-            {states === "meal" ? <Recipe_book_meal_by_id /> : null}
+            {states === "meal" ? <Recipe_book_meal_by_id meal={meal} error={error} set_error={set_error} /> : null}
         </div>
     )
 };
