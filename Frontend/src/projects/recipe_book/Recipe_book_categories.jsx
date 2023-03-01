@@ -5,7 +5,7 @@ const Recipe_book_categories = (props) =>
 
 
     return (
-        <div>
+        <div className={s.main_view}>
             {props.error && <p>{props.error}</p>}
 
             <div className={s.category_container}>

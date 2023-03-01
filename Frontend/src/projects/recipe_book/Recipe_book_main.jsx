@@ -1,10 +1,12 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
+import s from "./Recipe_book.module.css";
 import Recipe_book_categories from "./Recipe_book_categories.jsx";
 import Recipe_book_home from "./Recipe_book_home.jsx";
 import Recipe_book_navbar from "./Recipe_book_navbar.jsx";
 import Recipe_book_meals from "./Recipe_book_meals.jsx";
 import Recipe_book_meal_by_id from "./Recipe_book_meal_by_id.jsx";
+
 
 const Recipe_book_main = () =>
 {
@@ -141,10 +143,12 @@ const Recipe_book_main = () =>
     return (
         <div>
             <Recipe_book_navbar set_states={set_states} />
-            {states === "home" ? <Recipe_book_home /> : null}
-            {states === "categories" ? <Recipe_book_categories categories={categories} error={error} set_error={set_error} category_imgs={category_imgs} set_states={set_states} set_choosen_category={set_choosen_category} /> : null}
-            {states === "meals" ? <Recipe_book_meals meals={meals} error={error} set_error={set_error} set_states={set_states} set_meal_id={set_meal_id} /> : null}
-            {states === "meal" ? <Recipe_book_meal_by_id meal={meal} error={error} set_error={set_error} /> : null}
+            <div>
+                {states === "home" ? <Recipe_book_home /> : null}
+                {states === "categories" ? <Recipe_book_categories categories={categories} error={error} set_error={set_error} category_imgs={category_imgs} set_states={set_states} set_choosen_category={set_choosen_category} /> : null}
+                {states === "meals" ? <Recipe_book_meals meals={meals} error={error} set_error={set_error} set_states={set_states} set_meal_id={set_meal_id} /> : null}
+                {states === "meal" ? <Recipe_book_meal_by_id meal={meal} error={error} set_error={set_error} /> : null}
+            </div>
         </div>
     )
 };

@@ -4,10 +4,10 @@ import s from "./Recipe_book.module.css";
 const Recipe_book_meals = (props) =>
 {
     return (
-        <div>
+        <div className={s.main_view}>
             {props.error && <p>{props.error}</p>}
 
-            <div className={s.meal_container}>
+            <div className={s.meals_container}>
                 {props.meals !== null ? (
                     props.meals.map((meals, i) =>
                     (

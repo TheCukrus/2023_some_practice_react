@@ -9,7 +9,7 @@ const Recipe_book_navbar = (props) =>
 
 
     return (
-        <div>
+        <div className={s.navbar}>
             <div className={s.navbar_links}>
                 <input type="button" value="Home" onClick={handle_button_home} />
                 <input type="button" value="Categories" onClick={hangle_button_categories} />
@@ -18,7 +18,6 @@ const Recipe_book_navbar = (props) =>
                     <input type="search" placeholder="Search your recipes" />
                 </form>
             </div>
-            <hr />
         </div>
     )
 }
