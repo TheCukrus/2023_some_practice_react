@@ -7,12 +7,45 @@
     justify-items: end;
 }
 
-.footer_container a{
+.footer_container a {
     margin-right: 40px;
     text-decoration: none;
     color: aliceblue;
 }
-.footer_container a:hover{
-    color:red;
+
+.footer_container a:hover {
+    color: red;
     transition: color 0.5s;
 }
+
+.main-page-container{
+    text-align: center;
+}
+
+.app-links-container {
+    margin-top: 10em;
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+  }
+  
+  .app-link {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .icon-wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100px;
+    height: 100px;
+    background-color: #ccc;
+    border-radius: 50%;
+    margin-bottom: 0.5rem;
+  }
+  
+  .name-wrapper {
+    text-align: center;
+  }
