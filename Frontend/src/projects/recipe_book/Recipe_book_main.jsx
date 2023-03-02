@@ -6,6 +6,7 @@ import Recipe_book_home from "./Recipe_book_home.jsx";
 import Recipe_book_navbar from "./Recipe_book_navbar.jsx";
 import Recipe_book_meals from "./Recipe_book_meals.jsx";
 import Recipe_book_meal_by_id from "./Recipe_book_meal_by_id.jsx";
+import Recipe_book_search from "./Recipe_book_search";
 
 
 const Recipe_book_main = () =>
@@ -20,8 +21,12 @@ const Recipe_book_main = () =>
     const [choosen_category, set_choosen_category] = useState("");
     const [meals, set_meals] = useState([]);
 
-    const [meal_id, set_meal_id] = useState("")
-    const [meal, set_meal] = useState([])
+    const [meal_id, set_meal_id] = useState("");
+    const [meal, set_meal] = useState([]);
+
+    const [search_term, set_search_term] = useState("");
+    const [search_result, set_search_result] = useState([]);
+
 
 
     const fetch_recipes_categories = async () =>
@@ -142,12 +147,13 @@ const Recipe_book_main = () =>
 
     return (
         <div>
-            <Recipe_book_navbar set_states={set_states} />
+            <Recipe_book_navbar set_states={set_states} set_error={set_error} search_term={search_term} set_search_term={set_search_term} set_search_result={set_search_result} />
             <div>
                 {states === "home" ? <Recipe_book_home /> : null}
                 {states === "categories" ? <Recipe_book_categories categories={categories} error={error} set_error={set_error} category_imgs={category_imgs} set_states={set_states} set_choosen_category={set_choosen_category} /> : null}
                 {states === "meals" ? <Recipe_book_meals meals={meals} error={error} set_error={set_error} set_states={set_states} set_meal_id={set_meal_id} /> : null}
                 {states === "meal" ? <Recipe_book_meal_by_id meal={meal} error={error} set_error={set_error} /> : null}
+                {states === "search" ? <Recipe_book_search search_result={search_result} set_states={set_states} set_meal_id={set_meal_id} /> : null}
             </div>
         </div>
     )

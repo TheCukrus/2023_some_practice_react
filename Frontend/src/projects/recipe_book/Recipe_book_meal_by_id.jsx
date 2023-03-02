@@ -6,8 +6,6 @@ const Recipe_book_meal_by_id = (props) =>
 {
     const [instructions, set_instructions] = useState([])
 
-    console.log(props.meal)
-
     //making array to push the ingredients and it measures
     let meal_ingredients = [];
     for (let i = 1; i <= 20; i++)

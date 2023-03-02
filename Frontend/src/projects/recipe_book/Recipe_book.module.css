@@ -52,7 +52,7 @@
 
 /*Recipe_book_categories*/
 .category {
-    border: 1px solid #ccc;
+    border: 1px solid rgba(204, 204, 204, 0.459);
     border-radius: 5px;
     cursor: pointer;
     transition: all 0.2s ease-in-out;
