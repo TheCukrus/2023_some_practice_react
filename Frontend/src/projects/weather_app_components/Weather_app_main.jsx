@@ -3,6 +3,7 @@ import axios from "axios";
 import Weather_app_location_form from "./Weather_app_location_form.jsx";
 import Weather_app_data from "./Weather_app_data.jsx";
 import s from "./Weather.module.css";
+import Footer from "../../Footer.jsx";
 
 const Weather_app_main = () =>
 {
@@ -101,14 +102,11 @@ const Weather_app_main = () =>
     useEffect(() => { fetch_data(); }, [location]);
     useEffect(() => { fetch_air_polution(); }, [location]);
 
-    // useEffect(() => console.log(data), [data]);
-    // useEffect(() => console.log(air_pollution), [air_pollution]);
-
-
     return (
         <div className={s.main_container}>
             <Weather_app_location_form set_city={set_city} error={error} geo_location={geo_location} is_loading={is_loading} />
             <Weather_app_data data={data} air_pollution={air_pollution} unit={unit} set_unit={set_unit} temp_converter={temp_converter} />
+            <Footer />
         </div>
     )
 }

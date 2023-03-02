@@ -7,6 +7,7 @@ import Recipe_book_navbar from "./Recipe_book_navbar.jsx";
 import Recipe_book_meals from "./Recipe_book_meals.jsx";
 import Recipe_book_meal_by_id from "./Recipe_book_meal_by_id.jsx";
 import Recipe_book_search from "./Recipe_book_search";
+import Footer from "../../Footer";
 
 
 const Recipe_book_main = () =>
@@ -146,7 +147,7 @@ const Recipe_book_main = () =>
     }, [states])
 
     return (
-        <div>
+        <div className={s.container}>
             <Recipe_book_navbar set_states={set_states} set_error={set_error} search_term={search_term} set_search_term={set_search_term} set_search_result={set_search_result} />
             <div>
                 {states === "home" ? <Recipe_book_home /> : null}
@@ -155,6 +156,7 @@ const Recipe_book_main = () =>
                 {states === "meal" ? <Recipe_book_meal_by_id meal={meal} error={error} set_error={set_error} /> : null}
                 {states === "search" ? <Recipe_book_search search_result={search_result} set_states={set_states} set_meal_id={set_meal_id} /> : null}
             </div>
+            <Footer />
         </div>
     )
 };

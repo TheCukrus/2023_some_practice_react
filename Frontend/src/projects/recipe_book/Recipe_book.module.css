@@ -1,6 +1,12 @@
 /* Main view*/
 .main_view {
-    margin: 0em 2em 2em 2em;
+    margin: 0em 2em 0em 2em;
+    padding-bottom: 2em;
+}
+
+.container {
+    position: relative;
+    min-height: 100vh;
 }
 
 /*Recipe_book_navbar*/

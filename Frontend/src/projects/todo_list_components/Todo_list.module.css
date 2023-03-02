@@ -1,7 +1,7 @@
 /* main container */
 .Main_container {
   align-items: center;
-  padding: 20px;
+  padding: 20px 20px 20px 0px;
 }
 
 /* Todo list form component */
