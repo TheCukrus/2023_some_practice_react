@@ -24,7 +24,7 @@ const Recipe_book_search = (props) =>
                             <p className={s.meal_title}>{ele.strMeal}</p>
 
                         </div>
-                    )) : <p>Doesn't find any recipes</p>}
+                    )) : <p>Doesn't find any recipes</p>} 
             </div>
         </div>
     )
